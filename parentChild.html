@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <outer></outer>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    const inner ={
+        template: "<div>inner{{title}} <input type='text' id='input'> <button v-on:click='add'>alert</button></div>",
+        props:['title','clickJob'],
+        methods:{
+            'add': function (e) {
+                const inputElement = this.$el.querySelector("#input")
+                alert(inputElement.value)
+                this.$emit("addItem". inputElement.value)
+
+            }
+        }
+
+    }
+
+    const listComponent = {
+        template:"<ul><li>11111</li><li>2222</li><li>3333</li></ul>",
+        methods: {
+            addList:function(){
+             console.log("list called");
+            }
+        }
+
+    }
+
+    const outer = {
+        template:"<div> <p>OUTER</p>  <inner :title='title' :clickJob='doJob' v-on:addItem='add'></inner><listComponent></listComponent>   </div>",
+        data: function() {  return {
+            title:"Hello World",
+            doJob: function () {alert("aasdaff")
+
+            }
+        } },
+        components: {
+            "inner": inner,
+            "listComponent": listComponent
+        },
+        methods:{
+            add: function(newItem){
+                console.log("outer add method"+newItem)
+            }
+        }
+    }
+
+    new Vue({
+        el:"#app",
+        components: {
+            "outer": outer
+        }
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <logo></logo>
+    <sub1></sub1>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    var logo = Vue.component("logo",{
+        template:"<h1>로고ㅗㅗㅗㅗㅗㅗ</h1>"
+    })
+
+    var sub2 ={
+        template: "<h2>sssssssub</h2>"
+    }
+
+    const app = new Vue({
+        el:"#app",
+        components:{     //여기서 사용할 컴포넌트를 정의
+            'sub1': sub2
+        }
+    })
+
+</script>
+
+</body>
+</html>
